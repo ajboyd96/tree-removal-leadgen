@@ -143,8 +143,14 @@ function closeQuiz() {
 
 function displayQuestion() {
     const quizContent = document.getElementById('quiz-content');
-    const question = quizQuestions[currentQuestion];
     
+    // Check if we're on the lead capture screen (after question 6)
+    if (currentQuestion === quizQuestions.length) {
+        displayLeadCapture();
+        return;
+    }
+    
+    const question = quizQuestions[currentQuestion];
     if (!quizContent || !question) return;
 
     let html = `
@@ -168,55 +174,63 @@ function displayQuestion() {
         </div>
     `;
 
-    // Add lead capture form for the last question
-    if (currentQuestion === quizQuestions.length - 1) {
-        html += `
-            <div class="lead-capture">
-                <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Get Your Free Quote</h3>
-                <p style="color: var(--text-light); margin-bottom: 2rem;">We'll contact you within 2 hours with a personalized estimate based on your assessment.</p>
-                
-                <div class="form-group">
-                    <label for="full_name">Full Name *</label>
-                    <input type="text" id="full_name" class="form-control" required>
-                    <div class="error-message" id="full_name_error"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" class="form-control" placeholder="(555) 123-4567" required>
-                    <div class="error-message" id="phone_error"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
-                    <div class="error-message" id="email_error"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="address">Property Address</label>
-                    <input type="text" id="address" class="form-control" placeholder="Where is the tree located?">
-                </div>
-                
-                <div class="form-group">
-                    <label for="additional_info">Additional Information</label>
-                    <textarea id="additional_info" class="form-control" rows="3" placeholder="Any additional details about your tree removal needs..."></textarea>
-                </div>
-            </div>
-        `;
-    }
-
     html += `
         <div class="btn-group">
             ${currentQuestion > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">Previous</button>' : '<div></div>'}
-            ${currentQuestion < quizQuestions.length - 1 ? 
-                '<button class="btn btn-primary" onclick="nextQuestion()">Next</button>' : 
-                '<button class="btn btn-primary" onclick="submitQuiz()">Get My Free Quote</button>'
-            }
+            <button class="btn btn-primary" onclick="nextQuestion()">Next</button>
         </div>
     `;
 
     quizContent.innerHTML = html;
+}
+
+function displayLeadCapture() {
+    const quizContent = document.getElementById('quiz-content');
+    
+    let html = `
+        <div class="lead-capture">
+            <h3 style="color: var(--primary-color); margin: 2rem 0 1rem;">Get Your Quote</h3>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Please provide your contact information to receive your personalized estimate.</p>
+            
+            <div class="form-group">
+                <label for="full_name">Full Name *</label>
+                <input type="text" id="full_name" class="form-control" required>
+                <div class="error-message" id="full_name_error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" class="form-control" placeholder="(555) 123-4567" required>
+                <div class="error-message" id="phone_error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                <div class="error-message" id="email_error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Property Address</label>
+                <input type="text" id="address" class="form-control" placeholder="Where is the tree located?">
+            </div>
+            
+            <div class="form-group">
+                <label for="additional_info">Additional Information</label>
+                <textarea id="additional_info" class="form-control" rows="3" placeholder="Any additional details about your tree removal needs..."></textarea>
+            </div>
+        </div>
+        
+        <div class="btn-group">
+            <button class="btn btn-secondary" onclick="previousQuestion()">Previous</button>
+            <button class="btn btn-primary" onclick="submitQuiz()">Get My Quote</button>
+        </div>
+    `;
+
+    quizContent.innerHTML = html;
+    
+    // Set up phone formatting
+    setTimeout(formatPhoneNumber, 100);
 }
 
 function selectOption(questionId, value) {
@@ -237,18 +251,20 @@ function selectOption(questionId, value) {
 }
 
 function nextQuestion() {
-    const currentQuestionData = quizQuestions[currentQuestion];
-    
-    if (!quizData[currentQuestionData.id]) {
-        alert('Please select an option before continuing.');
-        return;
+    // If we're on a quiz question, validate selection
+    if (currentQuestion < quizQuestions.length) {
+        const currentQuestionData = quizQuestions[currentQuestion];
+        
+        if (!quizData[currentQuestionData.id]) {
+            alert('Please select an option before continuing.');
+            return;
+        }
     }
 
-    if (currentQuestion < quizQuestions.length - 1) {
-        currentQuestion++;
-        displayQuestion();
-        updateProgress();
-    }
+    // Move to next question or lead capture screen
+    currentQuestion++;
+    displayQuestion();
+    updateProgress();
 }
 
 function previousQuestion() {
@@ -264,9 +280,15 @@ function updateProgress() {
     const progressText = document.getElementById('progress-text');
     
     if (progressFill && progressText) {
-        const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+        const totalSteps = quizQuestions.length + 1; // +1 for lead capture screen
+        const progress = ((currentQuestion + 1) / totalSteps) * 100;
         progressFill.style.width = `${progress}%`;
-        progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        
+        if (currentQuestion < quizQuestions.length) {
+            progressText.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        } else {
+            progressText.textContent = `Contact Information`;
+        }
     }
 }
 
@@ -368,11 +390,6 @@ function getPriorityLevel(data) {
 
 // Submit Quiz
 async function submitQuiz() {
-    if (currentQuestion !== quizQuestions.length - 1) {
-        nextQuestion();
-        return;
-    }
-
     if (!validateForm()) {
         return;
     }
