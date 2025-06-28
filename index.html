@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeCare Pro - Professional Tree Removal Services</title>
+    <meta name="description" content="Get a free quote for professional tree removal services. Emergency removal, dead tree removal, and tree health assessments.">
+    <link rel="stylesheet" href="tree-removal-styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>TreeCare Pro</h1>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Professional Tree Removal Services</h1>
+                    <p class="hero-subtitle">Safe, reliable, and affordable tree removal for residential and commercial properties</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <span class="feature-icon">🌳</span>
+                            <span>Expert Tree Assessment</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">⚡</span>
+                            <span>Emergency Services</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">🏆</span>
+                            <span>Licensed & Insured</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <button class="cta-button primary" onclick="startQuiz()">Get Free Quote</button>
+                        <p class="cta-text">Take our 2-minute assessment to get an instant quote</p>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-placeholder">
+                        <span>🌲</span>
+                        <p>Professional Tree Care</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Our Tree Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🪓</div>
+                        <h3>Tree Removal</h3>
+                        <p>Complete tree removal for dead, diseased, or hazardous trees</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✂️</div>
+                        <h3>Tree Trimming</h3>
+                        <p>Professional pruning and trimming to maintain tree health</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚨</div>
+                        <h3>Emergency Service</h3>
+                        <p>24/7 emergency tree removal for storm damage and hazards</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔍</div>
+                        <h3>Tree Assessment</h3>
+                        <p>Expert evaluation of tree health and safety risks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why Choose TreeCare Pro?</h2>
+                        <ul class="about-list">
+                            <li><strong>Licensed & Insured:</strong> Fully certified professionals</li>
+                            <li><strong>Emergency Services:</strong> Available 24/7 for urgent situations</li>
+                            <li><strong>Free Estimates:</strong> No obligation quotes for all services</li>
+                            <li><strong>Safety First:</strong> OSHA-compliant safety procedures</li>
+                            <li><strong>Cleanup Included:</strong> Complete debris removal and cleanup</li>
+                        </ul>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Trees Removed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Emergency Service</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Get Started?</h2>
+                <p>Get your free quote in just 2 minutes with our quick assessment</p>
+                <button class="cta-button primary large" onclick="startQuiz()">Start Free Assessment</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TreeCare Pro</h3>
+                    <p>Professional tree removal services you can trust</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Tree Removal</li>
+                        <li>Tree Trimming</li>
+                        <li>Emergency Service</li>
+                        <li>Tree Assessment</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📞 (555) 123-TREE</p>
+                    <p>📧 info@treecarepro.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TreeCare Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Tree Removal Assessment</h2>
+                <span class="close" onclick="closeQuiz()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <span class="progress-text" id="progress-text">Question 1 of 6</span>
+                </div>
+                <div id="quiz-content">
+                    <!-- Quiz questions will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thank-you-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Thank You!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="thank-you-content">
+                    <div class="success-icon">✅</div>
+                    <h3>Assessment Complete!</h3>
+                    <p>We've received your information and will contact you within 2 hours with your personalized quote.</p>
+                    <div class="next-steps">
+                        <h4>What happens next?</h4>
+                        <ol>
+                            <li>We'll review your assessment</li>
+                            <li>Contact you to schedule a site visit</li>
+                            <li>Provide a detailed written estimate</li>
+                        </ol>
+                    </div>
+                    <button class="cta-button primary" onclick="closeThankYou()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="tree-removal-script.js"></script>
+</body>
+</html>
