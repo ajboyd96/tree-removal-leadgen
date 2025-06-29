@@ -207,11 +207,11 @@ body {
 
 .hero-banner {
     width: 100%;
-    max-width: 500px;
-    height: auto;
+    height: 300px;
     border-radius: 12px;
     box-shadow: var(--shadow);
     object-fit: cover;
+    opacity: 0.5;
 }
 
 /* Sections */
