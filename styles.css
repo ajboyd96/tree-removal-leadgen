@@ -205,6 +205,15 @@ body {
     font-size: 1.1rem;
 }
 
+.hero-banner {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    object-fit: cover;
+}
+
 /* Sections */
 .section-title {
     text-align: center;
@@ -245,6 +254,15 @@ body {
 .service-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
 }
 
 .service-card h3 {
